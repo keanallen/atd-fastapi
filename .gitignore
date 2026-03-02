@@ -3,3 +3,6 @@
 .vscode
 .venv
 .zip
+.env
+*.pyc
+__pycache__
