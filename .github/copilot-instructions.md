@@ -155,6 +155,9 @@ Always:
 * Keep functions small
 * Prefer composition over inheritance
 * Follow SOLID principles
+* When printing, use logging instead of print statements
+* When querying the database, use ORM models, not raw SQL queries
+* When querying the database, use the repository pattern, not direct access to the database session
 
 Avoid:
 

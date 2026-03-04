@@ -1,3 +1,4 @@
+import logging
 from pathlib import Path
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -19,4 +20,4 @@ class Settings(BaseSettings):
     )
 
 settings = Settings()
-print("[DEV]","Loaded settings:", settings)
+logging.warning("Loaded settings: %s", settings)
