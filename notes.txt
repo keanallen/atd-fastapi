@@ -1,0 +1,7 @@
+==============
+ ALEMBIC MIGRATION
+==============
+ alembic revision --autogenerate -m "message"
+ alembic upgrade head
+
+* Import newly created database models to database.py

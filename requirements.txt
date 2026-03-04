@@ -6,4 +6,5 @@ alembic==1.18.4
 python-multipart==0.0.22
 python-jose[cryptography]==3.5.0
 passlib[bcrypt]==1.7.4
-aiomysql==0.3.2
+aiomysql==0.3.2 # async
+PyMySQL==1.1.2 # sync -> used by alembic for migrations
