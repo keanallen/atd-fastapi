@@ -5,6 +5,7 @@
  alembic upgrade head
 
 * Import newly created database models to database.py
+* When resetting the migrations, make sure to delete /migrations/versions and database tables
 
 
 ====================================================
