@@ -25,7 +25,7 @@ async def login_user(data: LoginRequest, db: AsyncSession = Depends(get_db)):
             raise HTTPException(status_code=401, detail="Invalid email or password")
         return LoginResponse(access_token=token, token_type="bearer")
     except ValueError as e:
-        raise HTTPException(status_code=401, detail="Value Error: " +str(e))
+        raise HTTPException(status_code=401, detail=str(e))
     except Exception as e:
         raise HTTPException(status_code=500, detail="Internal server error: " + str(e))
 
