@@ -1,7 +1,7 @@
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from jose import jwt
-from app.core.database import AsyncSessionLocal
+from app.core.session import AsyncSessionLocal
 from sqlalchemy.ext.asyncio import AsyncSession
 from typing import AsyncGenerator
 from app.core.config import settings
