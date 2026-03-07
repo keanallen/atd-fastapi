@@ -12,6 +12,9 @@ router = APIRouter()
 
 @router.post("/login", response_model=LoginResponse)
 async def login_user(data: LoginRequest, db: AsyncSession = Depends(get_db)):
+    """
+    Authenticate a user and return a JWT token.
+    """
     try:
         if not data.email or not data.password:
             raise HTTPException(status_code=400, detail="Email and password are required")
@@ -22,13 +25,18 @@ async def login_user(data: LoginRequest, db: AsyncSession = Depends(get_db)):
             raise HTTPException(status_code=401, detail="Invalid email or password")
         return LoginResponse(access_token=token, token_type="bearer")
     except ValueError as e:
-        raise HTTPException(status_code=401, detail=str(e))
+        raise HTTPException(status_code=401, detail="Value Error: " +str(e))
     except Exception as e:
         raise HTTPException(status_code=500, detail="Internal server error: " + str(e))
 
 
 @router.get("/me")
 async def get_current_user(current_user = Depends(get_current_user)):
+    """
+    Get the current authenticated user.
+
+    This endpoint returns the details of the currently authenticated user based on the provided JWT token.
+    """
     try:
         return current_user
     except HTTPException as e:

@@ -10,10 +10,12 @@ class User:
     first_name: str = ""
     last_name: str = ""
     email: str = ""
-    hashed_password: str = ""
     status: str = "active"
-    created_at: Optional[datetime.datetime] = None
-    updated_at: Optional[datetime.datetime] = None
+    hashed_password: str = ""
+    roles: list[str] = None
 
     def verify_password(self, password: str) -> bool:
         return verify_password(password, self.hashed_password)
+
+    def has_role(self, role: str) -> bool:
+        return role in self.roles if self.roles else False
