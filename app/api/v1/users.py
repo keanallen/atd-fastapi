@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Body, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.core.session import get_db
-from app.core.deps import get_current_user
+from app.core.deps import get_current_user, require_roles
 
 from app.application.use_cases.auth_usecase import LoginUseCase
 from app.domain.schemas.user_schema import LoginRequest, LoginResponse
@@ -43,3 +43,13 @@ async def get_current_user(current_user = Depends(get_current_user)):
         raise e
     except Exception as e:
         raise HTTPException(status_code=500, detail="Internal server error: " + str(e))
+
+
+@router.get("/admin-only")
+async def admin_only_endpoint(current_user = Depends(require_roles(["super_admin"]))):
+    """
+    An example endpoint that requires admin role.
+
+    This endpoint is protected by a role guard that checks if the current user has the "admin" role.
+    """
+    return {"message": "Welcome, admin!"}
