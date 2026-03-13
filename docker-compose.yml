@@ -12,16 +12,16 @@ services:
     volumes:
       - mariadb_data:/var/lib/mysql
 
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: atd-phpmyadmin
-    restart: always
-    environment:
-      PMA_HOST: mariadb
-      PMA_USER: root
-      PMA_PASSWORD: root123
-    ports:
-      - "9090:80"
+  # phpmyadmin:
+  #   image: phpmyadmin/phpmyadmin
+  #   container_name: atd-phpmyadmin
+  #   restart: always
+  #   environment:
+  #     PMA_HOST: mariadb
+  #     PMA_USER: root
+  #     PMA_PASSWORD: root123
+  #   ports:
+  #     - "9090:80"
 
 volumes:
   mariadb_data:
