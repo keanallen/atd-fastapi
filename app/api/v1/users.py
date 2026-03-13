@@ -1,7 +1,6 @@
 from fastapi import APIRouter, Body, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
-from app.core.session import get_db
-from app.core.deps import get_current_user, require_roles
+from app.core.deps import get_current_user, require_roles, get_db
 
 from app.application.use_cases.auth_usecase import LoginUseCase
 from app.domain.schemas.user_schema import LoginRequest, LoginResponse
