@@ -7,7 +7,6 @@ from typing import AsyncGenerator
 from app.core.config import settings
 from app.domain.entities.user import User
 from app.infrastructure.repositories.user_repository_impl import UserRepositoryImpl
-from app.infrastructure.repositories.user_repository_impl import UserRepositoryImpl
 
 security = HTTPBearer()
 
